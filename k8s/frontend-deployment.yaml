@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ems-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ems-frontend
+  template:
+    metadata:
+      labels:
+        app: ems-frontend
+    spec:
+      containers:
+        - name: ems-frontend
+          image: akshaygouda646/employee_frontend:v1
+          ports:
+            - containerPort: 80

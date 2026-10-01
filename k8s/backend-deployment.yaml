@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ems-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ems-backend
+  template:
+    metadata:
+      labels:
+        app: ems-backend
+    spec:
+      containers:
+        - name: ems-backend
+          image: akshaygouda646/employee_backend:v1
+          ports:
+            - containerPort: 8082
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://ems-mysql:3306/ems
+            - name: SPRING_DATASOURCE_USERNAME
+              value: root
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: ems123
+            - name: SERVER_PORT
+              value: "8082"
